@@ -2,26 +2,33 @@
 <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView></TextView>
-    <RadioGroup>
+    <TextView
+        android:layout_marginStart="16dp" />
+    <TextView
+        android:layout_marginStart="16dp" />
+    <RadioGroup
+        android:orientation="horizontal">
         <RadioButton
             android:id="@+id/rdo1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="出席"
-            android:checked="true" />
+            android:checked="true"
+            android:layout_marginStart="8dp"/>
         <RadioButton
             android:id="@+id/rdo2"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="欠席"
-            android:checked="false" />
+            android:text="遅刻"
+            android:checked="false"
+            android:layout_marginStart="8dp"/>
         <RadioButton
             android:id="@+id/rdo3"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="遅刻"
-            android:checked="false" />
+            android:text="欠席"
+            android:checked="false"
+            android:layout_marginStart="8dp"/>
 
     </RadioGroup>
 </TableRow>

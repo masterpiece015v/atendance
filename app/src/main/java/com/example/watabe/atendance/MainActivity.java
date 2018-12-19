@@ -1,6 +1,5 @@
-package com.websarva.wings.android.atendanceapp;
+package com.example.watabe.atendance;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.websarva.wings.android.atendanceapp.R;
-import com.websarva.wings.android.atendanceapp.SubActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
