@@ -8,6 +8,6 @@ public class testactivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.websarva.wings.android.atendanceapp.R.layout.activity_testactivity);
+        setContentView(com.example.watabe.atendance.R.layout.activity_testactivity);
     }
 }

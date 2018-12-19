@@ -11,8 +11,9 @@ import android.widget.RadioGroup;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.websarva.wings.android.atendanceapp.R;
+//import com.websarva.wings.android.atendanceapp.R;
 
+import com.example.watabe.atendance.R;
 import mysqlite.Database;
 import mysqlite.SQLiteAdapter;
 import mysqlite.TableData;

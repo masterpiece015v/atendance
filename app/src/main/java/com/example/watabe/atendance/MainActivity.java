@@ -9,7 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.websarva.wings.android.atendanceapp.R;
+import com.example.watabe.atendance.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -112,10 +112,10 @@ public class MainActivity extends AppCompatActivity {
         //クラスのスピナーに登録
         ArrayAdapter<String> aryAdapter = new ArrayAdapter<>(
                 this,
-                android.R.layout.simple_spinner_item,
+                R.layout.spinner_item,
                 this.sqlAdapter.getSpinnerString("select distinct r_name from gakusei")
         );
-        aryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        aryAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         this.spnRoom.setAdapter(aryAdapter);
 
         //日付のスピナーに登録
@@ -137,9 +137,10 @@ public class MainActivity extends AppCompatActivity {
         //時間のスピナーに登録
         ArrayAdapter<String> timeAryAd = new ArrayAdapter<>(
                 this,
-                android.R.layout.simple_spinner_item,
+                R.layout.spinner_item,
                 new String[]{"1", "2", "3", "4"}
                 );
+        timeAryAd.setDropDownViewResource( R.layout.spinner_dropdown_item);
         spnTime.setAdapter(timeAryAd);
     }
 
@@ -244,9 +245,10 @@ public class MainActivity extends AppCompatActivity {
                 if(sqlAdapter!=null){
                     ArrayAdapter<String> aryAd = new ArrayAdapter<>(
                             this,
-                            android.R.layout.simple_spinner_item,
+                            R.layout.spinner_item,
                             k_list
                     );
+                    aryAd.setDropDownViewResource(R.layout.spinner_dropdown_item);
                     spnSub.setAdapter( aryAd );
                 }
                 //その時間の科目を表示する
@@ -260,9 +262,10 @@ public class MainActivity extends AppCompatActivity {
                 //科目が存在しない時は科目を空白にする
                 ArrayAdapter<String> aryAd = new ArrayAdapter<>(
                         this,
-                        android.R.layout.simple_spinner_item,
+                        R.layout.spinner_item,
                         new String[]{}
                 );
+                aryAd.setDropDownViewResource(R.layout.spinner_dropdown_item);
                 spnSub.setAdapter( aryAd );
             }
         }catch(ParseException e){
