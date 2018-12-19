@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">atendance</string>
+    <string name="label1">クラス</string>
+    <string name="label2">日付</string>
+</resources>
