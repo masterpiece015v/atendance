@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TableRow;
@@ -129,6 +130,7 @@ public class SubActivity extends AppCompatActivity {
         alert.show();
 
     }
+
 
     public void btnUpdateOnClick( View view ) {
         for (int i = 0; i < tblGakusei.getChildCount(); i++) {

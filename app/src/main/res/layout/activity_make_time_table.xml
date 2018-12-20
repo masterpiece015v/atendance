@@ -7,21 +7,21 @@
     tools:context=".MakeTimeTableActivity">
 
     <LinearLayout
-        android:layout_width="368dp"
-        android:layout_height="495dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="370dp"
+        android:layout_height="400dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/txtRoom"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
@@ -29,14 +29,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:gravity="center_vertical">
 
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="時間"
                 android:textSize="18sp" />
 
@@ -45,6 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="Mon"
                 android:textSize="18sp" />
 
@@ -53,6 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="Tue"
                 android:textSize="18sp" />
 
@@ -61,6 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="Wed"
                 android:textSize="18sp" />
 
@@ -69,7 +72,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Thr"
+                android:gravity="center"
+                android:text="Thu"
                 android:textSize="18sp" />
 
             <TextView
@@ -77,6 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="Fri"
                 android:textSize="18sp" />
 
@@ -98,38 +103,40 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:text="1限目"
-                    android:textSize="18sp" />
+                    android:textSize="12sp" />
 
-                <Spinner
-                    android:id="@+id/spinner6"
+                <TextView
+                    android:id="@+id/txtMon1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <Spinner
-                    android:id="@+id/spinner5"
+                <TextView
+                    android:id="@+id/txtTue1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <Spinner
-                    android:id="@+id/spinner4"
+                <TextView
+                    android:id="@+id/txtWed1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <Spinner
-                    android:id="@+id/spinner3"
+                <TextView
+                    android:id="@+id/txtThu1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <Spinner
-                    android:id="@+id/spinner2"
+                <TextView
+                    android:id="@+id/txtFri1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
+
             </TableRow>
 
             <TableRow
@@ -143,38 +150,40 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:text="2限目"
-                    android:textSize="18sp" />
+                    android:textSize="12sp" />
 
-                <Spinner
-                    android:id="@+id/spinner7"
+                <TextView
+                    android:id="@+id/txtMon2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <Spinner
-                    android:id="@+id/spinner8"
+                <TextView
+                    android:id="@+id/txtTue2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <Spinner
-                    android:id="@+id/spinner9"
+                <TextView
+                    android:id="@+id/txtWed2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <Spinner
-                    android:id="@+id/spinner10"
+                <TextView
+                    android:id="@+id/txtThu2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <Spinner
-                    android:id="@+id/spinner11"
+                <TextView
+                    android:id="@+id/txtFri2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
+
             </TableRow>
 
             <TableRow
@@ -188,38 +197,40 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:text="3限目"
-                    android:textSize="18sp" />
+                    android:textSize="12sp" />
 
-                <Spinner
-                    android:id="@+id/spinner12"
+                <TextView
+                    android:id="@+id/txtMon3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <Spinner
-                    android:id="@+id/spinner13"
+                <TextView
+                    android:id="@+id/txtTue3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <Spinner
-                    android:id="@+id/spinner14"
+                <TextView
+                    android:id="@+id/txtWed3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <Spinner
-                    android:id="@+id/spinner15"
+                <TextView
+                    android:id="@+id/txtThu3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <Spinner
-                    android:id="@+id/spinner16"
+                <TextView
+                    android:id="@+id/txtFri3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
+
             </TableRow>
 
             <TableRow
@@ -233,38 +244,40 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:text="4限目"
-                    android:textSize="18sp" />
+                    android:textSize="12sp" />
 
-                <Spinner
-                    android:id="@+id/spinner17"
+                <TextView
+                    android:id="@+id/txtMon4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <Spinner
-                    android:id="@+id/spinner18"
+                <TextView
+                    android:id="@+id/txtTue4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <Spinner
-                    android:id="@+id/spinner19"
+                <TextView
+                    android:id="@+id/txtWed4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <Spinner
-                    android:id="@+id/spinner20"
+                <TextView
+                    android:id="@+id/txtThu4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <Spinner
-                    android:id="@+id/spinner21"
+                <TextView
+                    android:id="@+id/txtFri4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
+
             </TableRow>
         </TableLayout>
 

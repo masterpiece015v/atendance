@@ -132,6 +132,7 @@ public class SQLiteAdapter {
 
         return items;
     }
+
     //TableDataオブジェクトにして返す
     public TableData getTableData( String sql ){
         Cursor cursor = sqliteDb.rawQuery( sql ,null);

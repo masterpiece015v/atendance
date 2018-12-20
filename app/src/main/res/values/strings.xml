@@ -2,4 +2,18 @@
     <string name="app_name">atendance</string>
     <string name="label1">クラス</string>
     <string name="label2">日付</string>
+
+    <string-array name="k_name">
+        <item></item>
+        <item>情報概論</item>
+        <item>Java</item>
+        <item>商業簿記</item>
+        <item>工業簿記</item>
+        <item>Word</item>
+        <item>Excel</item>
+        <item>FP</item>
+        <item>ビジネス実務</item>
+        <item>ビジネス会計</item>
+    </string-array>
+
 </resources>

@@ -329,6 +329,7 @@ public class MainActivity extends AppCompatActivity {
     //時間割作成を開く
     public void btnMakeTimeTableOnClick( View view ){
         Intent intent = new Intent( this,MakeTimeTableActivity.class );
+        intent.putExtra("txtRoom",(String)spnRoom.getSelectedItem());
         startActivity(intent);
     }
 }
