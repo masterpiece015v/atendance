@@ -3,12 +3,11 @@ package com.example.watabe.atendance;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.HashMap;
@@ -19,23 +18,20 @@ import mysqlite.SQLiteAdapter;
 import mysqlite.TableData;
 import mysqlite.TableRowData;
 
-import java.util.Calendar;
-import java.time.DayOfWeek;
-
-import static com.example.watabe.atendance.R.array.k_name;
-
 public class MakeTimeTableActivity extends AppCompatActivity {
     //フィールド
     Map<String,TextView> txtMap = new HashMap<>();
     SQLiteAdapter sqlAdapter;
-    PopupWindow pw;
-    private PopupWindow popWin;
+    PopupWindow popWin;
+    MakeTimeTableActivity parent;
     //メソッド
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_time_table);
 
+        //
+        parent = this;
         //インテント
         Intent intent = getIntent();
         String strRoom = intent.getStringExtra("txtRoom");
@@ -70,14 +66,15 @@ public class MakeTimeTableActivity extends AppCompatActivity {
         for( String key : txtMap.keySet()){
             TextView tempTextView = txtMap.get(key);
             tempTextView.setOnClickListener(new View.OnClickListener(){
-
                 @Override
                 public void onClick(View view) {
-                    txtXXXOnClick( view );
+                    //list_popupwindow_show(view);
+                    ListAlert dialog = new ListAlert(parent,"hello","ok");
+                    dialog.show();
+
                 }
             });
         }
-
 
         //Sqliteから時間割を取得する
         sqlAdapter = new SQLiteAdapter(getApplicationContext(), new Database("mydb.db"));
@@ -121,20 +118,24 @@ public class MakeTimeTableActivity extends AppCompatActivity {
 
     }
 
-    //ポップアップを表示する
-    public void txtXXXOnClick( View v){
-        Log.d("event","ocClick");
-        popWin = new PopupWindow( MakeTimeTableActivity.this);
-        View popupView = getLayoutInflater().inflate(R.layout.listview_popupwindow,null);
-        popupView.findViewById(R.id.close_button).setOnClickListener(new View.OnClickListener(){
-           @Override
-           public void onClick( View v ){
-               if( popWin.isShowing() ){
-                   popWin.dismiss();
-               }
-           }
+    public void list_popupwindow_show(View view){
+        View popView = getLayoutInflater().inflate(R.layout.listview_popupwindow,null);
+
+        popWin = new PopupWindow( popView,
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        popView.findViewById(R.id.close_button).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick( View v ){
+                if( popWin.isShowing() ){
+                    popWin.dismiss();
+                }
+            }
         });
-        popWin.showAtLocation(findViewById(R.id.txtMon1),Gravity.CENTER,0,0);
+        //背景色の設定
+
+        popWin.showAtLocation(view,Gravity.CENTER,0,0);
     }
 
 }
