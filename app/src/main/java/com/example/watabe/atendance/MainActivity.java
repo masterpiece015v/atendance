@@ -76,35 +76,35 @@ public class MainActivity extends AppCompatActivity {
             database.setValues("gakusei", new String[]{"10008", "堂山", "1-1"});
             database.setValues("gakusei", new String[]{"10009", "二井内", "1-1"});
 
-            database.setValues("subject", new String[]{"1-1", DayOfWeek.MONDAY.toString(), "1", "商業簿記"});
-            database.setValues("subject", new String[]{"1-1", DayOfWeek.MONDAY.toString(), "2", "商業簿記"});
-            database.setValues("subject", new String[]{"1-1", DayOfWeek.MONDAY.toString(), "3", "Java"});
-            database.setValues("subject", new String[]{"1-1", DayOfWeek.TUESDAY.toString(), "1", "Word"});
-            database.setValues("subject", new String[]{"1-1", DayOfWeek.TUESDAY.toString(), "2", "情報概論"});
-            database.setValues("subject", new String[]{"1-1", DayOfWeek.WEDNESDAY.toString(), "1", "Excel"});
-            database.setValues("subject", new String[]{"1-1", DayOfWeek.WEDNESDAY.toString(), "2", "情報概論"});
-            database.setValues("subject", new String[]{"1-1", DayOfWeek.WEDNESDAY.toString(), "3", "工業簿記"});
-            database.setValues("subject", new String[]{"1-1", DayOfWeek.THURSDAY.toString(), "1", "工業簿記"});
-            database.setValues("subject", new String[]{"1-1", DayOfWeek.THURSDAY.toString(), "2", "職業指導"});
-            database.setValues("subject", new String[]{"1-1", DayOfWeek.THURSDAY.toString(), "3", "商業簿記"});
-            database.setValues("subject", new String[]{"1-1", DayOfWeek.FRIDAY.toString(), "1", "Excel"});
-            database.setValues("subject", new String[]{"1-1", DayOfWeek.FRIDAY.toString(), "2", "情報概論"});
-            database.setValues("subject", new String[]{"1-1", DayOfWeek.FRIDAY.toString(), "3", "工業簿記"});
+            database.setValues("subject", new String[]{"1-1", Weekday.MON.toString(), "1", "商業簿記"});
+            database.setValues("subject", new String[]{"1-1", Weekday.MON.toString(), "2", "商業簿記"});
+            database.setValues("subject", new String[]{"1-1", Weekday.MON.toString(), "3", "Java"});
+            database.setValues("subject", new String[]{"1-1", Weekday.TUE.toString(), "1", "Word"});
+            database.setValues("subject", new String[]{"1-1", Weekday.TUE.toString(), "2", "情報概論"});
+            database.setValues("subject", new String[]{"1-1", Weekday.WED.toString(), "1", "Excel"});
+            database.setValues("subject", new String[]{"1-1", Weekday.WED.toString(), "2", "情報概論"});
+            database.setValues("subject", new String[]{"1-1", Weekday.WED.toString(), "3", "工業簿記"});
+            database.setValues("subject", new String[]{"1-1", Weekday.THU.toString(), "1", "工業簿記"});
+            database.setValues("subject", new String[]{"1-1", Weekday.THU.toString(), "2", "職業指導"});
+            database.setValues("subject", new String[]{"1-1", Weekday.THU.toString(), "3", "商業簿記"});
+            database.setValues("subject", new String[]{"1-1", Weekday.FRI.toString(), "1", "Excel"});
+            database.setValues("subject", new String[]{"1-1", Weekday.FRI.toString(), "2", "情報概論"});
+            database.setValues("subject", new String[]{"1-1", Weekday.FRI.toString(), "3", "工業簿記"});
 
-            database.setValues("subject", new String[]{"1-2", DayOfWeek.MONDAY.toString(), "1", "ビジネス実務"});
-            database.setValues("subject", new String[]{"1-2", DayOfWeek.MONDAY.toString(), "2", "PowerPoint"});
-            database.setValues("subject", new String[]{"1-2", DayOfWeek.MONDAY.toString(), "3", "Access"});
-            database.setValues("subject", new String[]{"1-2", DayOfWeek.TUESDAY.toString(), "1", "FP"});
-            database.setValues("subject", new String[]{"1-2", DayOfWeek.TUESDAY.toString(), "2", "FP"});
-            database.setValues("subject", new String[]{"1-2", DayOfWeek.WEDNESDAY.toString(), "1", "プレゼン"});
-            database.setValues("subject", new String[]{"1-2", DayOfWeek.WEDNESDAY.toString(), "2", "消費税"});
-            database.setValues("subject", new String[]{"1-2", DayOfWeek.WEDNESDAY.toString(), "3", "所得税"});
-            database.setValues("subject", new String[]{"1-2", DayOfWeek.THURSDAY.toString(), "1", "法人税"});
-            database.setValues("subject", new String[]{"1-2", DayOfWeek.THURSDAY.toString(), "2", "Webページ"});
-            database.setValues("subject", new String[]{"1-2", DayOfWeek.THURSDAY.toString(), "3", "ビジネス会計"});
-            database.setValues("subject", new String[]{"1-2", DayOfWeek.FRIDAY.toString(), "1", "ビジネス会計"});
-            database.setValues("subject", new String[]{"1-2", DayOfWeek.FRIDAY.toString(), "2", "PowerPoint"});
-            database.setValues("subject", new String[]{"1-2", DayOfWeek.FRIDAY.toString(), "3", "Access"});
+            database.setValues("subject", new String[]{"1-2", Weekday.MON.toString(), "1", "ビジネス実務"});
+            database.setValues("subject", new String[]{"1-2", Weekday.MON.toString(), "2", "PowerPoint"});
+            database.setValues("subject", new String[]{"1-2", Weekday.MON.toString(), "3", "Access"});
+            database.setValues("subject", new String[]{"1-2", Weekday.TUE.toString(), "1", "FP"});
+            database.setValues("subject", new String[]{"1-2", Weekday.TUE.toString(), "2", "FP"});
+            database.setValues("subject", new String[]{"1-2", Weekday.WED.toString(), "1", "プレゼン"});
+            database.setValues("subject", new String[]{"1-2", Weekday.WED.toString(), "2", "消費税"});
+            database.setValues("subject", new String[]{"1-2", Weekday.WED.toString(), "3", "所得税"});
+            database.setValues("subject", new String[]{"1-2", Weekday.THU.toString(), "1", "法人税"});
+            database.setValues("subject", new String[]{"1-2", Weekday.THU.toString(), "2", "Webページ"});
+            database.setValues("subject", new String[]{"1-2", Weekday.THU.toString(), "3", "ビジネス会計"});
+            database.setValues("subject", new String[]{"1-2", Weekday.FRI.toString(), "1", "ビジネス会計"});
+            database.setValues("subject", new String[]{"1-2", Weekday.FRI.toString(), "2", "PowerPoint"});
+            database.setValues("subject", new String[]{"1-2", Weekday.FRI.toString(), "3", "Access"});
             this.sqlAdapter = new SQLiteAdapter(this.getApplicationContext(), database);
             count = count + 1;
         }
@@ -249,25 +249,25 @@ public class MainActivity extends AppCompatActivity {
 
             switch( c.get(Calendar.DAY_OF_WEEK)){
                 case Calendar.SUNDAY:
-                    sql2 = sql2.replace( "@weekday" , DayOfWeek.SUNDAY.toString() );
+                    sql2 = sql2.replace( "@weekday" , Weekday.SUN.toString() );
                     break;
                 case Calendar.MONDAY:
-                    sql2 = sql2.replace( "@weekday" , DayOfWeek.MONDAY.toString() );
+                    sql2 = sql2.replace( "@weekday" , Weekday.MON.toString() );
                     break;
                 case Calendar.TUESDAY:
-                    sql2 = sql2.replace( "@weekday" , DayOfWeek.TUESDAY.toString() );
+                    sql2 = sql2.replace( "@weekday" , Weekday.TUE.toString() );
                     break;
                 case Calendar.WEDNESDAY:
-                    sql2 = sql2.replace( "@weekday" , DayOfWeek.WEDNESDAY.toString() );
+                    sql2 = sql2.replace( "@weekday" , Weekday.WED.toString() );
                     break;
                 case Calendar.THURSDAY:
-                    sql2 = sql2.replace( "@weekday" , DayOfWeek.TUESDAY.toString() );
+                    sql2 = sql2.replace( "@weekday" , Weekday.TUE.toString() );
                     break;
                 case Calendar.FRIDAY:
-                    sql2 = sql2.replace( "@weekday" , DayOfWeek.FRIDAY.toString() );
+                    sql2 = sql2.replace( "@weekday" , Weekday.FRI.toString() );
                     break;
                 case Calendar.SATURDAY:
-                    sql2 = sql2.replace( "@weekday" , DayOfWeek.SATURDAY.toString() );
+                    sql2 = sql2.replace( "@weekday" , Weekday.SAT.toString() );
                     break;
             }
             sql2 = sql2.replace("@lessonTime", lessonTime);

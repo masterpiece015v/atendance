@@ -41,30 +41,30 @@ public class MakeTimeTableActivity extends AppCompatActivity {
         //クラス名の挿入
         ((TextView)findViewById(R.id.txtRoom)).setText( strRoom );
         //MapにtxtXXXYを登録する
-        txtMap.put("Mon1",(TextView)findViewById(R.id.txtMon1));
-        txtMap.put("Mon2",(TextView)findViewById(R.id.txtMon2));
-        txtMap.put("Mon3",(TextView)findViewById(R.id.txtMon3));
-        txtMap.put("Mon4",(TextView)findViewById(R.id.txtMon4));
+        txtMap.put("MON1",(TextView)findViewById(R.id.txtMON1));
+        txtMap.put("MON2",(TextView)findViewById(R.id.txtMON2));
+        txtMap.put("MON3",(TextView)findViewById(R.id.txtMON3));
+        txtMap.put("MON4",(TextView)findViewById(R.id.txtMON4));
 
-        txtMap.put("Tue1",(TextView)findViewById(R.id.txtTue1));
-        txtMap.put("Tue2",(TextView)findViewById(R.id.txtTue2));
-        txtMap.put("Tue3",(TextView)findViewById(R.id.txtTue3));
-        txtMap.put("Tue4",(TextView)findViewById(R.id.txtTue4));
+        txtMap.put("TUE1",(TextView)findViewById(R.id.txtTUE1));
+        txtMap.put("TUE2",(TextView)findViewById(R.id.txtTUE2));
+        txtMap.put("TUE3",(TextView)findViewById(R.id.txtTUE3));
+        txtMap.put("TUE4",(TextView)findViewById(R.id.txtTUE4));
 
-        txtMap.put("Wed1",(TextView)findViewById(R.id.txtWed1));
-        txtMap.put("Wed2",(TextView)findViewById(R.id.txtWed2));
-        txtMap.put("Wed3",(TextView)findViewById(R.id.txtWed3));
-        txtMap.put("Wed4",(TextView)findViewById(R.id.txtWed4));
+        txtMap.put("WED1",(TextView)findViewById(R.id.txtWED1));
+        txtMap.put("WED2",(TextView)findViewById(R.id.txtWED2));
+        txtMap.put("WED3",(TextView)findViewById(R.id.txtWED3));
+        txtMap.put("WED4",(TextView)findViewById(R.id.txtWED4));
 
-        txtMap.put("Thu1",(TextView)findViewById(R.id.txtThu1));
-        txtMap.put("Thu2",(TextView)findViewById(R.id.txtThu2));
-        txtMap.put("Thu3",(TextView)findViewById(R.id.txtThu3));
-        txtMap.put("Thu4",(TextView)findViewById(R.id.txtThu4));
+        txtMap.put("THU1",(TextView)findViewById(R.id.txtTHU1));
+        txtMap.put("THU2",(TextView)findViewById(R.id.txtTHU2));
+        txtMap.put("THU3",(TextView)findViewById(R.id.txtTHU3));
+        txtMap.put("THU4",(TextView)findViewById(R.id.txtTHU4));
 
-        txtMap.put("Fri1",(TextView)findViewById(R.id.txtFri1));
-        txtMap.put("Fri2",(TextView)findViewById(R.id.txtFri2));
-        txtMap.put("Fri3",(TextView)findViewById(R.id.txtFri3));
-        txtMap.put("Fri4",(TextView)findViewById(R.id.txtFri4));
+        txtMap.put("FRI1",(TextView)findViewById(R.id.txtFRI1));
+        txtMap.put("FRI2",(TextView)findViewById(R.id.txtFRI2));
+        txtMap.put("FRI3",(TextView)findViewById(R.id.txtFRI3));
+        txtMap.put("FRI4",(TextView)findViewById(R.id.txtFRI4));
 
         //イベント登録
         for( String key : txtMap.keySet()){
@@ -87,25 +87,24 @@ public class MakeTimeTableActivity extends AppCompatActivity {
         sqlAdapter = new SQLiteAdapter(getApplicationContext(), new Database("mydb.db"));
         TableData table = sqlAdapter.getTableData("select * from subject where r_name='@r_name'".replace("@r_name",strRoom));
         for(TableRowData row : table ){
-            String key = null;
-            String weekday = row.getValue(1);
-            switch( weekday ){
-                case "MONDAY":
-                    key = "Mon";
+            String key = row.getValue(1);
+            /*switch( weekday ){
+                case "MON":
+                    key = "MON";
                     break;
-                case "TUESDAY":
-                    key = "Tue";
+                case "TUE":
+                    key = "TUE";
                     break;
-                case "WEDNESDAY":
-                    key = "Wed";
+                case "WED":
+                    key = "WED";
                     break;
-                case "THURSDAY":
-                    key = "Thu";
+                case "THU":
+                    key = "THU";
                     break;
-                case "FRIDAY":
-                    key = "Fri";
+                case "FRI":
+                    key = "FRI";
                     break;
-            }
+            }*/
             key = key + row.getValue(2);
             TextView tv = txtMap.get(key);
             tv.setText( row.getValue(3));
@@ -124,5 +123,14 @@ public class MakeTimeTableActivity extends AppCompatActivity {
 
     }
 
+    //イベント
+    public void txtUpdateOnClick( View view ){
+        for( String key : txtMap.keySet() ){
 
+            TextView tempTextView = ((TextView)txtMap.get(key));
+
+
+
+        }
+    }
 }

@@ -10,7 +10,7 @@ public class Subject extends Table {
     public void setFieldList() {
 
         this.addField(new TableField("r_name",FieldType.CHAR,10,true));
-        this.addField(new TableField("weekday",FieldType.CHAR,10,true));
+        this.addField(new TableField("weekday",FieldType.CHAR,3,true));
         this.addField(new TableField("lessonTime",FieldType.INTEGER,0,true));
         this.addField(new TableField("k_name",FieldType.CHAR,10,false));
     }

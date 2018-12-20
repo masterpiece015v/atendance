@@ -7,7 +7,7 @@
     tools:context=".MakeTimeTableActivity">
 
     <LinearLayout
-        android:layout_width="370dp"
+        android:layout_width="360dp"
         android:layout_height="400dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
@@ -19,11 +19,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/txtRoom"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_height="16dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtRoom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/btnUpDate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="更新" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,57 +48,63 @@
 
             <TextView
                 android:id="@+id/textView9"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/frame_style"
                 android:gravity="center"
                 android:text="時間"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/textView6"
-                android:layout_width="wrap_content"
+                android:layout_width="59dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/frame_style"
                 android:gravity="center"
-                android:text="Mon"
-                android:textSize="18sp" />
+                android:text="MON"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/textView5"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/frame_style"
                 android:gravity="center"
-                android:text="Tue"
-                android:textSize="18sp" />
+                android:text="TUE"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/textView4"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/frame_style"
                 android:gravity="center"
-                android:text="Wed"
-                android:textSize="18sp" />
+                android:text="WED"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/textView3"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/frame_style"
                 android:gravity="center"
-                android:text="Thu"
-                android:textSize="18sp" />
+                android:text="THU"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/frame_style"
                 android:gravity="center"
-                android:text="Fri"
-                android:textSize="18sp" />
+                android:text="FRI"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
@@ -100,42 +121,58 @@
 
                 <TextView
                     android:id="@+id/textView10"
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="@drawable/frame_style"
                     android:gravity="center"
-                    android:text="1限目"
+                    android:text="1"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/txtMon1"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/txtMON1"
+                    android:layout_width="60dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/frame_style"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/txtTue1"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/txtTUE1"
+                    android:layout_width="60dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/frame_style"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/txtWed1"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/txtWED1"
+                    android:layout_width="60dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/frame_style"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/txtThu1"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/txtTHU1"
+                    android:layout_width="60dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/frame_style"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/txtFri1"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/txtFRI1"
+                    android:layout_width="60dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/frame_style"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="12sp" />
 
             </TableRow>
 
@@ -150,39 +187,55 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="@drawable/frame_style"
                     android:gravity="center"
-                    android:text="2限目"
+                    android:text="2"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/txtMon2"
+                    android:id="@+id/txtMON2"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/frame_style"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/txtTue2"
+                    android:id="@+id/txtTUE2"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/frame_style"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/txtWed2"
+                    android:id="@+id/txtWED2"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/frame_style"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/txtThu2"
+                    android:id="@+id/txtTHU2"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/frame_style"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/txtFri2"
+                    android:id="@+id/txtFRI2"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/frame_style"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="12sp" />
 
             </TableRow>
 
@@ -197,39 +250,55 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="@drawable/frame_style"
                     android:gravity="center"
-                    android:text="3限目"
+                    android:text="3"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/txtMon3"
+                    android:id="@+id/txtMON3"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/frame_style"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/txtTue3"
+                    android:id="@+id/txtTUE3"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/frame_style"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/txtWed3"
+                    android:id="@+id/txtWED3"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/frame_style"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/txtThu3"
+                    android:id="@+id/txtTHU3"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/frame_style"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/txtFri3"
+                    android:id="@+id/txtFRI3"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/frame_style"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="12sp" />
 
             </TableRow>
 
@@ -244,39 +313,55 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="@drawable/frame_style"
                     android:gravity="center"
-                    android:text="4限目"
+                    android:text="4"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/txtMon4"
+                    android:id="@+id/txtMON4"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/frame_style"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/txtTue4"
+                    android:id="@+id/txtTUE4"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/frame_style"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/txtWed4"
+                    android:id="@+id/txtWED4"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/frame_style"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/txtThu4"
+                    android:id="@+id/txtTHU4"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/frame_style"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/txtFri4"
+                    android:id="@+id/txtFRI4"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@drawable/frame_style"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="12sp" />
 
             </TableRow>
         </TableLayout>

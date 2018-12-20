@@ -1,6 +1,7 @@
 package com.example.watabe.atendance;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -75,8 +76,16 @@ public class ListAlert {
                 @Override
                 public void onClick(View view){
                     TextView local = (TextView)view;
+
+                    String oldText = (String)((TextView)parentView).getText();
+
                     ((TextView)parentView).setText( local.getText() );
 
+                    //科目名が変われば色を変える
+                    if(!oldText.equals(local.getText())) {
+
+                        ((TextView) parentView).setBackgroundColor(Color.YELLOW);
+                    }
                     dialog.dismiss();
                 }
             });
