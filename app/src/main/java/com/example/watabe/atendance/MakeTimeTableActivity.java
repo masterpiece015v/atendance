@@ -20,10 +20,10 @@ import mysqlite.TableRowData;
 
 public class MakeTimeTableActivity extends AppCompatActivity {
     //フィールド
-    Map<String,TextView> txtMap = new HashMap<>();
-    SQLiteAdapter sqlAdapter;
-    PopupWindow popWin;
-    MakeTimeTableActivity parent;
+    private Map<String,TextView> txtMap = new HashMap<>();
+    private SQLiteAdapter sqlAdapter;
+    private PopupWindow popWin;
+    private MakeTimeTableActivity parent;
     //メソッド
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,14 +62,17 @@ public class MakeTimeTableActivity extends AppCompatActivity {
         txtMap.put("Fri2",(TextView)findViewById(R.id.txtFri2));
         txtMap.put("Fri3",(TextView)findViewById(R.id.txtFri3));
         txtMap.put("Fri4",(TextView)findViewById(R.id.txtFri4));
+
         //イベント登録
         for( String key : txtMap.keySet()){
             TextView tempTextView = txtMap.get(key);
             tempTextView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
-                    //list_popupwindow_show(view);
-                    ListAlert dialog = new ListAlert(parent,"hello","ok");
+                    ListAlert dialog = new ListAlert(parent,view);
+                    dialog.add("Excel");
+                    dialog.add("Word");
+                    dialog.add("情報");
                     dialog.show();
 
                 }
@@ -82,7 +85,6 @@ public class MakeTimeTableActivity extends AppCompatActivity {
         for(TableRowData row : table ){
             String key = null;
             String weekday = row.getValue(1);
-
             switch( weekday ){
                 case "MONDAY":
                     key = "Mon";
