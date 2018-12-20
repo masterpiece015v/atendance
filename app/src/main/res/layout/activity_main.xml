@@ -26,23 +26,19 @@
 
             <Button
                 android:id="@+id/btnNextPage"
-                android:layout_width="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:onClick="btnNextPageOnClick"
                 android:text="出席" />
 
             <Button
                 android:id="@+id/btnMakeTimeTable"
-                android:layout_width="130dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="btnMakeTimeTableOnClick"
                 android:text="時間割" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
 
         </LinearLayout>
 
