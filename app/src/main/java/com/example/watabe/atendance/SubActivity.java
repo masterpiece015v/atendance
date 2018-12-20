@@ -1,7 +1,9 @@
 package com.example.watabe.atendance;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -123,6 +125,9 @@ public class SubActivity extends AppCompatActivity {
             Log.d( "insert" , insert );
             sqlAdapter.execSQL( insert );
         }
+        MyAlert alert = new MyAlert(this,"追加されました","OK");
+        alert.show();
+
     }
 
     public void btnUpdateOnClick( View view ) {
@@ -147,13 +152,17 @@ public class SubActivity extends AppCompatActivity {
                 record = "1";
             }
 
-            String update = "update timetable set record='@record' where g_no='@g_no' and date='@date' and lessonTime='@lessonTime'";
+            String update = "update timetable set record='@record',k_name='@k_name' where g_no='@g_no' and date='@date' and lessonTime='@lessonTime'";
             update = update.replace("@g_no", g_no);
             update = update.replace("@date", date);
             update = update.replace("@lessonTime", lessonTime);
             update = update.replace("@record", record);
+            update = update.replace("@k_name",k_name);
             Log.d("update", update);
             sqlAdapter.execSQL(update);
         }
+
+        MyAlert alert = new MyAlert(this,"更新されました","OK");
+        alert.show();
     }
 }

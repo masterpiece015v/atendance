@@ -31,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
     private SQLiteAdapter sqlAdapter;
     public SQLiteAdapter getSqlAdapter(){return sqlAdapter;}
     private static int count = 0;
+    private static String strRoom = null;
+    private static String strDate = null;
+    private static String strTime = null;
+    private static String strSub = null;
     private Database database;
 
     @Override
@@ -50,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         spnDate.setOnItemSelectedListener(new SpnDateOnItemSelectedListener());
         spnTime.setOnItemSelectedListener(new SpnTimeOnItemSelectedListener());
 
-        //データベースの作成
+        //データベースの作成（初回のみ）
         if( count == 0) {
             //mydb.dbの削除
             try {
@@ -110,38 +114,71 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //クラスのスピナーに登録
+        String[] aryRoom = this.sqlAdapter.getSpinnerString("select distinct r_name from gakusei");
         ArrayAdapter<String> aryAdapter = new ArrayAdapter<>(
                 this,
                 R.layout.spinner_item,
-                this.sqlAdapter.getSpinnerString("select distinct r_name from gakusei")
+                aryRoom
         );
         aryAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         this.spnRoom.setAdapter(aryAdapter);
+        //以前選択をしていればそれを表示
+        int num = 0;
+        if( strRoom != null ){
+            for( int i = 0 ; i < aryRoom.length ; i++ ){
+                if( strRoom.equals(aryRoom[i]) ){
+                    num = i;
+                    break;
+                }
+            }
+        }
+        this.spnRoom.setSelection(num);
 
         //日付のスピナーに登録
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("YY年MM月dd日 E");
-        String[] days = new String[7];
+        String[] aryDate = new String[7];
         for (int i = 0; i < 7; i++) {
-            days[i] = sdf.format(cal.getTime());
+            aryDate[i] = sdf.format(cal.getTime());
             cal.add(Calendar.DAY_OF_MONTH, 1);
         }
         ArrayAdapter<String> dayAryAd = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_item,
-                days
+                aryDate
         );
         dayAryAd.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spnDate.setAdapter(dayAryAd);
+        this.spnDate.setAdapter(dayAryAd);
+        num = 0;
+        if( strDate != null ){
+            for( int i = 0 ; i < aryDate.length ; i++ ){
+                if( strDate.equals(aryDate[i]) ){
+                    num = i;
+                    break;
+                }
+            }
+        }
+        this.spnDate.setSelection( num );
 
         //時間のスピナーに登録
+        String[] aryTime = new String[]{"1","2","3","4"};
         ArrayAdapter<String> timeAryAd = new ArrayAdapter<>(
                 this,
                 R.layout.spinner_item,
-                new String[]{"1", "2", "3", "4"}
+                aryTime
                 );
         timeAryAd.setDropDownViewResource( R.layout.spinner_dropdown_item);
         spnTime.setAdapter(timeAryAd);
+        num = 0;
+        if( strTime != null ){
+            for( int i = 0 ; i < aryTime.length ; i++ ){
+                if( strTime.equals(aryTime[i]) ){
+                    num = i;
+                    break;
+                }
+            }
+        }
+        this.spnTime.setSelection( num );
     }
 
     //イベントクラス
@@ -150,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
             changeSubject();
+            strRoom = (String)((Spinner)(adapterView)).getSelectedItem();
         }
 
         @Override
@@ -163,6 +201,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
             changeSubject();
+            strDate = (String)((Spinner)(adapterView)).getSelectedItem();
         }
 
         @Override
@@ -176,6 +215,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
             changeSubject();
+            strTime = (String)((Spinner)(adapterView)).getSelectedItem();
         }
 
         @Override
@@ -274,7 +314,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //buttonOnClick
+    //出欠登録を開く
     public void btnNextPageOnClick( View view ){
         //インテントの作成
         Intent intent = new Intent(this,SubActivity.class);
@@ -285,5 +325,10 @@ public class MainActivity extends AppCompatActivity {
 
         startActivity( intent );
 
+    }
+    //時間割作成を開く
+    public void btnMakeTimeTableOnClick( View view ){
+        Intent intent = new Intent( this,MakeTimeTableActivity.class );
+        startActivity(intent);
     }
 }
