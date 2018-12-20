@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -131,6 +132,18 @@ public class SQLiteAdapter {
         cursor.close();
 
         return items;
+    }
+
+    public ArrayList<String> getArrayList(String sql ){
+        ArrayList<String> list = new ArrayList<>();
+        Cursor cursor = sqliteDb.rawQuery( sql , null );
+        cursor.moveToFirst();
+
+        for( int i = 0 ; i < cursor.getCount() ; i++ ){
+            list.add( cursor.getString(0) );
+            cursor.moveToNext();
+        }
+        return list;
     }
 
     //TableDataオブジェクトにして返す

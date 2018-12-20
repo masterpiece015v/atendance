@@ -3,6 +3,7 @@ package com.example.watabe.atendance;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -10,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,6 +26,7 @@ public class MakeTimeTableActivity extends AppCompatActivity {
     private SQLiteAdapter sqlAdapter;
     private PopupWindow popWin;
     private MakeTimeTableActivity parent;
+    private String strRoom;
     //メソッド
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +37,7 @@ public class MakeTimeTableActivity extends AppCompatActivity {
         parent = this;
         //インテント
         Intent intent = getIntent();
-        String strRoom = intent.getStringExtra("txtRoom");
+        this.strRoom = intent.getStringExtra("txtRoom");
         //クラス名の挿入
         ((TextView)findViewById(R.id.txtRoom)).setText( strRoom );
         //MapにtxtXXXYを登録する
@@ -70,9 +73,10 @@ public class MakeTimeTableActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     ListAlert dialog = new ListAlert(parent,view);
-                    dialog.add("Excel");
-                    dialog.add("Word");
-                    dialog.add("情報");
+                    ArrayList<String> list = sqlAdapter.getArrayList("select distinct k_name from subject");
+                    //for(String item : list)
+                        //Log.d( "onClick:" , item );
+                    dialog.setList( list );
                     dialog.show();
 
                 }
@@ -120,24 +124,5 @@ public class MakeTimeTableActivity extends AppCompatActivity {
 
     }
 
-    public void list_popupwindow_show(View view){
-        View popView = getLayoutInflater().inflate(R.layout.listview_popupwindow,null);
-
-        popWin = new PopupWindow( popView,
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-
-        popView.findViewById(R.id.close_button).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick( View v ){
-                if( popWin.isShowing() ){
-                    popWin.dismiss();
-                }
-            }
-        });
-        //背景色の設定
-
-        popWin.showAtLocation(view,Gravity.CENTER,0,0);
-    }
 
 }

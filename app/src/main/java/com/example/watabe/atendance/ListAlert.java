@@ -21,7 +21,8 @@ public class ListAlert {
     private CustomAdapter adapter;
     private Context context;
     private View parentView;
-    //コンストラクタ
+
+    //コンストラクタ Viewは
     public ListAlert( Context context ,View view) {
         this.parentView = view;
         this.context = context;
@@ -37,7 +38,6 @@ public class ListAlert {
         dialog = new AlertDialog.Builder(context)
                 .setView(this.listView)
                 .create();
-
     }
 
     public void show(){
@@ -47,6 +47,11 @@ public class ListAlert {
     public void add( String item ){
         Log.d("add",item);
         this.itemList.add( item );
+    }
+
+    public void setList( ArrayList<String> list ){
+        for(String item : list )
+            this.itemList.add( item );
     }
 
     public class CustomAdapter extends ArrayAdapter<String>{
@@ -62,9 +67,9 @@ public class ListAlert {
         public View getView(int position , View v, ViewGroup parent){
             if( null == v)
                 v = this.inflater.inflate(R.layout.custom_listview,null);
+
             TextView textView = (TextView)v.findViewById(R.id.string_item);
-            this.item = (String)getItem(position);
-            textView.setText( this.item );
+            textView.setText( (String)getItem(position) );
 
             textView.setOnClickListener(new View.OnClickListener(){
                 @Override
