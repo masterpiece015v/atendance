@@ -2,6 +2,7 @@ package com.example.watabe.atendance;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,7 +24,7 @@ public class ListAlert {
     private Context context;
     private View parentView;
 
-    //コンストラクタ Viewは
+    //コンストラクタ Viewは親のビュー
     public ListAlert( Context context ,View view) {
         this.parentView = view;
         this.context = context;
@@ -41,23 +42,29 @@ public class ListAlert {
                 .create();
     }
 
+    //ダイアログを表示するメソッド
     public void show(){
         this.dialog.show();
     }
 
+    //リストに追加するメソッド
     public void add( String item ){
         Log.d("add",item);
         this.itemList.add( item );
     }
 
+    //リストにリストを設定するメソッド
     public void setList( ArrayList<String> list ){
         for(String item : list )
             this.itemList.add( item );
     }
 
+    //リストのアダプタ
     public class CustomAdapter extends ArrayAdapter<String>{
         private LayoutInflater inflater;
         private String item;
+
+        //コンストラクタ
         public CustomAdapter( Context context ,
                               int resource,
                               List<String> objects ){
@@ -72,6 +79,7 @@ public class ListAlert {
             TextView textView = (TextView)v.findViewById(R.id.string_item);
             textView.setText( (String)getItem(position) );
 
+            //ダイアログのテキストをクリックしたときのイベント
             textView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view){
@@ -83,8 +91,8 @@ public class ListAlert {
 
                     //科目名が変われば色を変える
                     if(!oldText.equals(local.getText())) {
-
-                        ((TextView) parentView).setBackgroundColor(Color.YELLOW);
+                        Drawable drawable = context.getResources().getDrawable(R.drawable.frame_style_yellow);
+                        ((TextView) parentView).setBackground(drawable);
                     }
                     dialog.dismiss();
                 }
@@ -93,5 +101,6 @@ public class ListAlert {
             Log.d("getView", (String)getItem(position));
             return v;
         }
+
     }
 }

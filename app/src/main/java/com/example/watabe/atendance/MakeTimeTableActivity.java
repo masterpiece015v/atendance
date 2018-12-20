@@ -74,11 +74,8 @@ public class MakeTimeTableActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     ListAlert dialog = new ListAlert(parent,view);
                     ArrayList<String> list = sqlAdapter.getArrayList("select distinct k_name from subject");
-                    //for(String item : list)
-                        //Log.d( "onClick:" , item );
                     dialog.setList( list );
                     dialog.show();
-
                 }
             });
         }
@@ -88,28 +85,11 @@ public class MakeTimeTableActivity extends AppCompatActivity {
         TableData table = sqlAdapter.getTableData("select * from subject where r_name='@r_name'".replace("@r_name",strRoom));
         for(TableRowData row : table ){
             String key = row.getValue(1);
-            /*switch( weekday ){
-                case "MON":
-                    key = "MON";
-                    break;
-                case "TUE":
-                    key = "TUE";
-                    break;
-                case "WED":
-                    key = "WED";
-                    break;
-                case "THU":
-                    key = "THU";
-                    break;
-                case "FRI":
-                    key = "FRI";
-                    break;
-            }*/
+
             key = key + row.getValue(2);
             TextView tv = txtMap.get(key);
             tv.setText( row.getValue(3));
 
-            //Log.d("timetable:row",key );
         }
 
         //リソースから作る場合、ファクトリーメソッドになる
@@ -124,10 +104,11 @@ public class MakeTimeTableActivity extends AppCompatActivity {
     }
 
     //イベント
-    public void txtUpdateOnClick( View view ){
+    public void btnUpdateOnClick( View view ){
         for( String key : txtMap.keySet() ){
 
             TextView tempTextView = ((TextView)txtMap.get(key));
+            Log.d("key,value",key + "," + tempTextView.getText() );
 
 
 
