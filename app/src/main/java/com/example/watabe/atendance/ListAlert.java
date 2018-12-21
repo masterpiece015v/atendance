@@ -3,6 +3,7 @@ package com.example.watabe.atendance;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -59,10 +60,21 @@ public class ListAlert {
             this.itemList.add( item );
     }
 
+    //リストボックスのテキストボックスにイベントを登録する
+    public void setTextViewOnClick( View.OnClickListener listener ){
+        adapter.setTextViewOnClickListener( listener );
+    }
+
     //リストのアダプタ
     public class CustomAdapter extends ArrayAdapter<String>{
         private LayoutInflater inflater;
         private String item;
+        private View.OnClickListener listener;
+
+        //セッター
+        public void setTextViewOnClickListener( View.OnClickListener listener ){
+            this.listener = listener;
+        }
 
         //コンストラクタ
         public CustomAdapter( Context context ,
@@ -80,6 +92,7 @@ public class ListAlert {
             textView.setText( (String)getItem(position) );
 
             //ダイアログのテキストをクリックしたときのイベント
+            /*
             textView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view){
@@ -91,16 +104,24 @@ public class ListAlert {
 
                     //科目名が変われば色を変える
                     if(!oldText.equals(local.getText())) {
-                        Drawable drawable = context.getResources().getDrawable(R.drawable.frame_style_yellow);
+                        //Drawable drawable = context.getResources().getDrawable(R.drawable.frame_style_yellow);
+                        Drawable drawable = ResourcesCompat.getDrawable( context.getResources(),R.drawable.frame_style_yellow,null);
                         ((TextView) parentView).setBackground(drawable);
                     }
                     dialog.dismiss();
                 }
             });
+            */
+
+            textView.setOnClickListener( listener );
 
             Log.d("getView", (String)getItem(position));
             return v;
         }
 
+    }
+    //ダイアログを閉じる
+    public void dismiss(){
+        this.dialog.dismiss();
     }
 }

@@ -1,6 +1,8 @@
 package com.example.watabe.atendance;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +29,8 @@ public class MakeTimeTableActivity extends AppCompatActivity {
     private PopupWindow popWin;
     private MakeTimeTableActivity parent;
     private String strRoom;
+    private ListAlert dialog;
+    private TextView tempTextView;
     //メソッド
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,11 +72,34 @@ public class MakeTimeTableActivity extends AppCompatActivity {
 
         //イベント登録
         for( String key : txtMap.keySet()){
-            TextView tempTextView = txtMap.get(key);
+            tempTextView = txtMap.get(key);
+
             tempTextView.setOnClickListener(new View.OnClickListener(){
+                //ダイアログ内に渡すためのフィールド
+                final TextView parentView = tempTextView;
+                //テキストをクリックしたときのイベント
                 @Override
-                public void onClick(View view) {
-                    ListAlert dialog = new ListAlert(parent,view);
+                public void onClick(View View) {
+                    dialog = new ListAlert(parent,View);
+
+                    //ダイアログ内のテキストをクリックしたときのイベント
+                    dialog.setTextViewOnClick(new View.OnClickListener(){
+                        @Override
+                        public void onClick( View view ){
+
+                            Log.d("XXXXXX",(String)parentView.getText());
+                            parentView.setText( (String)((TextView)view).getText() );
+
+                            Drawable drawable = ResourcesCompat.getDrawable( getResources(),R.drawable.frame_style_yellow,null);
+
+                            parentView.setBackground(drawable);
+
+                            dialog.dismiss();
+
+
+                        }
+                    });
+
                     ArrayList<String> list = sqlAdapter.getArrayList("select distinct k_name from subject");
                     dialog.setList( list );
                     dialog.show();
