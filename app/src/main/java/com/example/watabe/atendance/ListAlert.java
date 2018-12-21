@@ -107,6 +107,7 @@ public class ListAlert {
 
             TextView textView = (TextView)v.findViewById(R.id.string_item);
             textView.setText( (String)getItem(position) );
+
             //イベントの登録
             textView.setOnClickListener( listener );
 

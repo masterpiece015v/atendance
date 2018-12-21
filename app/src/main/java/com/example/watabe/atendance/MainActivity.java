@@ -316,15 +316,19 @@ public class MainActivity extends AppCompatActivity {
 
     //出欠登録を開く
     public void btnNextPageOnClick( View view ){
-        //インテントの作成
-        Intent intent = new Intent(this,SubActivity.class);
-        intent.putExtra("txtRoom",(String)spnRoom.getSelectedItem());
-        intent.putExtra("txtDate",(String)spnDate.getSelectedItem());
-        intent.putExtra("txtLessonTime",(String)spnTime.getSelectedItem());
-        intent.putExtra("txtSubject",(String)spnSub.getSelectedItem());
+        if( spnSub.getSelectedItem() != null ) {
+            //インテントの作成
+            Intent intent = new Intent(this, SubActivity.class);
+            intent.putExtra("txtRoom", (String) spnRoom.getSelectedItem());
+            intent.putExtra("txtDate", (String) spnDate.getSelectedItem());
+            intent.putExtra("txtLessonTime", (String) spnTime.getSelectedItem());
+            intent.putExtra("txtSubject", (String) spnSub.getSelectedItem());
 
-        startActivity( intent );
-
+            startActivity(intent);
+        }else{
+            MyAlert alert = new MyAlert(this,"科目を選択してください","OK");
+            alert.show();
+        }
     }
     //時間割作成を開く
     public void btnMakeTimeTableOnClick( View view ){

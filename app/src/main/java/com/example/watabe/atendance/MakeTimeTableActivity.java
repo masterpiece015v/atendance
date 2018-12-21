@@ -28,11 +28,11 @@ public class MakeTimeTableActivity extends AppCompatActivity {
     //フィールド
     private Map<String,TextView> txtMap = new HashMap<>();
     private SQLiteAdapter sqlAdapter;
-    private PopupWindow popWin;
     private MakeTimeTableActivity parent;
     private String strRoom;
     private ListAlert dialog;
     private TextView tempTextView;
+
     //メソッド
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +76,7 @@ public class MakeTimeTableActivity extends AppCompatActivity {
         for( String key : txtMap.keySet()){
             tempTextView = txtMap.get(key);
 
+            //科目名をクリックしたらリストを出すためのイベント登録
             tempTextView.setOnClickListener(new View.OnClickListener(){
                 //ダイアログ内に渡すためのフィールド
                 final TextView parentView = tempTextView;
@@ -90,14 +91,21 @@ public class MakeTimeTableActivity extends AppCompatActivity {
                         public void onClick( View view ){
 
                             Log.d("XXXXXX",(String)parentView.getText());
-                            parentView.setText( (String)((TextView)view).getText() );
+
+                            String setText = (String)((TextView)view).getText();
+
+                            parentView.setText( setText );
+
+                            if( setText.length() >= 6 ){
+                                parentView.setTextSize( 8 );
+                            }else{
+                                parentView.setTextSize( 12 );
+                            }
 
                             Drawable drawable = ResourcesCompat.getDrawable( getResources(),R.drawable.frame_style_yellow,null);
-
                             parentView.setBackground(drawable);
 
                             dialog.dismiss();
-
 
                         }
                     });
@@ -119,8 +127,16 @@ public class MakeTimeTableActivity extends AppCompatActivity {
 
             key = key + row.getValue(2);
             TextView tv = txtMap.get(key);
-            tv.setText( row.getValue(3));
 
+            String setText = row.getValue( 3 );
+            tv.setText( setText );
+
+            //テキストのサイズを変更する
+            if( setText.length() >= 6 ){
+                tv.setTextSize( 8 );
+            }else{
+                tv.setTextSize( 12 );
+            }
         }
 
         //リソースから作る場合、ファクトリーメソッドになる
@@ -140,11 +156,7 @@ public class MakeTimeTableActivity extends AppCompatActivity {
 
             TextView tempTextView = ((TextView)txtMap.get(key));
             String k_name = (String)tempTextView.getText();
-
             Log.d("key,value",key + "," + tempTextView.getText() );
-
-            String sql = "update subject set k_name='@k_name' where r_name='@r_name' and weekday='@weekday' and lessonTime=@lessonTime";
-
             Matcher m = Pattern.compile("[\\s\\S]{1,3}").matcher(key);
             m.find();
             String weekday = m.group();
@@ -152,6 +164,37 @@ public class MakeTimeTableActivity extends AppCompatActivity {
             String lessonTime = m.group();
             Log.d("btnUpDateOnClick", weekday + "," + lessonTime);
 
+            String select = "select * from subject where r_name='@r_name' and weekday='@weekday' and lessonTime=@lessonTime";
+            select =  select.replace("@r_name",this.strRoom);
+            select = select.replace("@weekday",weekday);
+            select = select.replace("@lessonTime",lessonTime);
+            TableData table = sqlAdapter.getTableData(select );
+
+            if( table.rowCount() == 1 && k_name.length() > 0 ) {
+                String sql = "update subject set k_name='@k_name' where r_name='@r_name' and weekday='@weekday' and lessonTime=@lessonTime";
+                sql = sql.replace("@k_name", k_name);
+                sql = sql.replace("@r_name", this.strRoom);
+                sql = sql.replace("@weekday", weekday);
+                sql = sql.replace("@lessonTime", lessonTime);
+                sqlAdapter.execSQL(sql);
+            }else if( table.rowCount() == 1 && k_name.length() == 0 ){
+                String sql = "delete from subject where r_name='@r_name' and weekday='@weekday' and lessonTime=@lessonTime";
+                sql = sql.replace("@r_name", this.strRoom);
+                sql = sql.replace("@weekday", weekday);
+                sql = sql.replace("@lessonTime", lessonTime);
+                sqlAdapter.execSQL(sql);
+            }else if( table.rowCount() == 0 && k_name.length() > 0 ){
+                String sql = "insert into subject( r_name , weekday , lessonTime , k_name ) values ('@r_name','@weekday', @lessonTime, '@k_name')";
+                sql = sql.replace( "@r_name",this.strRoom);
+                sql = sql.replace( "@weekday",weekday);
+                sql = sql.replace("@lessonTime",lessonTime);
+                sql = sql.replace("@k_name",k_name);
+                sqlAdapter.execSQL( sql );
+            }
+
         }
+        MyAlert alert = new MyAlert(this,"更新できました","OK");
+        alert.show();
+
     }
 }
