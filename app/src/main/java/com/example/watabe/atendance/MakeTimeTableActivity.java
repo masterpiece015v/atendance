@@ -16,6 +16,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import mysqlite.Database;
 import mysqlite.SQLiteAdapter;
@@ -80,7 +82,7 @@ public class MakeTimeTableActivity extends AppCompatActivity {
                 //テキストをクリックしたときのイベント
                 @Override
                 public void onClick(View View) {
-                    dialog = new ListAlert(parent,View);
+                    dialog = new ListAlert(parent);
 
                     //ダイアログ内のテキストをクリックしたときのイベント
                     dialog.setTextViewOnClick(new View.OnClickListener(){
@@ -100,7 +102,9 @@ public class MakeTimeTableActivity extends AppCompatActivity {
                         }
                     });
 
+                    //ダイアログのリストに表示する内容の登録
                     ArrayList<String> list = sqlAdapter.getArrayList("select distinct k_name from subject");
+                    list.add(0,"");
                     dialog.setList( list );
                     dialog.show();
                 }
@@ -130,14 +134,23 @@ public class MakeTimeTableActivity extends AppCompatActivity {
 
     }
 
-    //イベント
+    //更新ボタンのイベント
     public void btnUpdateOnClick( View view ){
         for( String key : txtMap.keySet() ){
 
             TextView tempTextView = ((TextView)txtMap.get(key));
+            String k_name = (String)tempTextView.getText();
+
             Log.d("key,value",key + "," + tempTextView.getText() );
 
+            String sql = "update subject set k_name='@k_name' where r_name='@r_name' and weekday='@weekday' and lessonTime=@lessonTime";
 
+            Matcher m = Pattern.compile("[\\s\\S]{1,3}").matcher(key);
+            m.find();
+            String weekday = m.group();
+            m.find();
+            String lessonTime = m.group();
+            Log.d("btnUpDateOnClick", weekday + "," + lessonTime);
 
         }
     }

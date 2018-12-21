@@ -61,6 +61,7 @@ public class SubActivity extends AppCompatActivity {
         tblGakusei = (ViewGroup)findViewById(R.id.tblGakusei);
         TableData tableData = sqlAdapter.getTableData( sql );
         int i = 0;
+
         for( TableRowData row : tableData){
             Log.d("tableRowdata",row.getValue(0) );
             getLayoutInflater().inflate(R.layout.table_row,tblGakusei);
