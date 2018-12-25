@@ -1,4 +1,4 @@
-package com.example.watabe.atendance;
+package tokyo.mp015v.atendance;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -103,9 +103,9 @@ public class ListAlert {
         @Override
         public View getView(int position , View v, ViewGroup parent){
             if( null == v)
-                v = this.inflater.inflate(R.layout.custom_listview,null);
+                v = this.inflater.inflate(com.example.watabe.atendance.R.layout.custom_listview,null);
 
-            TextView textView = (TextView)v.findViewById(R.id.string_item);
+            TextView textView = (TextView)v.findViewById(com.example.watabe.atendance.R.id.string_item);
             textView.setText( (String)getItem(position) );
 
             //イベントの登録

@@ -1,4 +1,4 @@
-package mysqlite;
+package tokyo.mp015v.mysqlite;
 
 public class TableField {
     private String name;

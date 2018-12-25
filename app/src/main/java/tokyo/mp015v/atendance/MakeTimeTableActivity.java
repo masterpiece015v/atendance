@@ -1,4 +1,4 @@
-package com.example.watabe.atendance;
+package tokyo.mp015v.atendance;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -6,11 +6,8 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -19,10 +16,10 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import mysqlite.Database;
-import mysqlite.SQLiteAdapter;
-import mysqlite.TableData;
-import mysqlite.TableRowData;
+import tokyo.mp015v.mysqlite.Database;
+import tokyo.mp015v.mysqlite.SQLiteAdapter;
+import tokyo.mp015v.mysqlite.TableData;
+import tokyo.mp015v.mysqlite.TableRowData;
 
 public class MakeTimeTableActivity extends AppCompatActivity {
     //フィールド
@@ -37,7 +34,7 @@ public class MakeTimeTableActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_make_time_table);
+        setContentView(com.example.watabe.atendance.R.layout.activity_make_time_table);
 
         //
         parent = this;
@@ -45,32 +42,32 @@ public class MakeTimeTableActivity extends AppCompatActivity {
         Intent intent = getIntent();
         this.strRoom = intent.getStringExtra("txtRoom");
         //クラス名の挿入
-        ((TextView)findViewById(R.id.txtRoom)).setText( strRoom );
+        ((TextView)findViewById(com.example.watabe.atendance.R.id.txtRoom)).setText( strRoom );
         //MapにtxtXXXYを登録する
-        txtMap.put("MON1",(TextView)findViewById(R.id.txtMON1));
-        txtMap.put("MON2",(TextView)findViewById(R.id.txtMON2));
-        txtMap.put("MON3",(TextView)findViewById(R.id.txtMON3));
-        txtMap.put("MON4",(TextView)findViewById(R.id.txtMON4));
+        txtMap.put("MON1",(TextView)findViewById(com.example.watabe.atendance.R.id.txtMON1));
+        txtMap.put("MON2",(TextView)findViewById(com.example.watabe.atendance.R.id.txtMON2));
+        txtMap.put("MON3",(TextView)findViewById(com.example.watabe.atendance.R.id.txtMON3));
+        txtMap.put("MON4",(TextView)findViewById(com.example.watabe.atendance.R.id.txtMON4));
 
-        txtMap.put("TUE1",(TextView)findViewById(R.id.txtTUE1));
-        txtMap.put("TUE2",(TextView)findViewById(R.id.txtTUE2));
-        txtMap.put("TUE3",(TextView)findViewById(R.id.txtTUE3));
-        txtMap.put("TUE4",(TextView)findViewById(R.id.txtTUE4));
+        txtMap.put("TUE1",(TextView)findViewById(com.example.watabe.atendance.R.id.txtTUE1));
+        txtMap.put("TUE2",(TextView)findViewById(com.example.watabe.atendance.R.id.txtTUE2));
+        txtMap.put("TUE3",(TextView)findViewById(com.example.watabe.atendance.R.id.txtTUE3));
+        txtMap.put("TUE4",(TextView)findViewById(com.example.watabe.atendance.R.id.txtTUE4));
 
-        txtMap.put("WED1",(TextView)findViewById(R.id.txtWED1));
-        txtMap.put("WED2",(TextView)findViewById(R.id.txtWED2));
-        txtMap.put("WED3",(TextView)findViewById(R.id.txtWED3));
-        txtMap.put("WED4",(TextView)findViewById(R.id.txtWED4));
+        txtMap.put("WED1",(TextView)findViewById(com.example.watabe.atendance.R.id.txtWED1));
+        txtMap.put("WED2",(TextView)findViewById(com.example.watabe.atendance.R.id.txtWED2));
+        txtMap.put("WED3",(TextView)findViewById(com.example.watabe.atendance.R.id.txtWED3));
+        txtMap.put("WED4",(TextView)findViewById(com.example.watabe.atendance.R.id.txtWED4));
 
-        txtMap.put("THU1",(TextView)findViewById(R.id.txtTHU1));
-        txtMap.put("THU2",(TextView)findViewById(R.id.txtTHU2));
-        txtMap.put("THU3",(TextView)findViewById(R.id.txtTHU3));
-        txtMap.put("THU4",(TextView)findViewById(R.id.txtTHU4));
+        txtMap.put("THU1",(TextView)findViewById(com.example.watabe.atendance.R.id.txtTHU1));
+        txtMap.put("THU2",(TextView)findViewById(com.example.watabe.atendance.R.id.txtTHU2));
+        txtMap.put("THU3",(TextView)findViewById(com.example.watabe.atendance.R.id.txtTHU3));
+        txtMap.put("THU4",(TextView)findViewById(com.example.watabe.atendance.R.id.txtTHU4));
 
-        txtMap.put("FRI1",(TextView)findViewById(R.id.txtFRI1));
-        txtMap.put("FRI2",(TextView)findViewById(R.id.txtFRI2));
-        txtMap.put("FRI3",(TextView)findViewById(R.id.txtFRI3));
-        txtMap.put("FRI4",(TextView)findViewById(R.id.txtFRI4));
+        txtMap.put("FRI1",(TextView)findViewById(com.example.watabe.atendance.R.id.txtFRI1));
+        txtMap.put("FRI2",(TextView)findViewById(com.example.watabe.atendance.R.id.txtFRI2));
+        txtMap.put("FRI3",(TextView)findViewById(com.example.watabe.atendance.R.id.txtFRI3));
+        txtMap.put("FRI4",(TextView)findViewById(com.example.watabe.atendance.R.id.txtFRI4));
 
         //イベント登録
         for( String key : txtMap.keySet()){
@@ -102,7 +99,7 @@ public class MakeTimeTableActivity extends AppCompatActivity {
                                 parentView.setTextSize( 12 );
                             }
 
-                            Drawable drawable = ResourcesCompat.getDrawable( getResources(),R.drawable.frame_style_yellow,null);
+                            Drawable drawable = ResourcesCompat.getDrawable( getResources(), com.example.watabe.atendance.R.drawable.frame_style_yellow,null);
                             parentView.setBackground(drawable);
 
                             dialog.dismiss();
@@ -142,11 +139,11 @@ public class MakeTimeTableActivity extends AppCompatActivity {
         //リソースから作る場合、ファクトリーメソッドになる
         ArrayAdapter<CharSequence> aryAd = ArrayAdapter.createFromResource(
                 this,
-                R.array.k_name,
-                R.layout.spinner_item_text8sp
+                com.example.watabe.atendance.R.array.k_name,
+                com.example.watabe.atendance.R.layout.spinner_item_text8sp
         );
 
-        aryAd.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        aryAd.setDropDownViewResource(com.example.watabe.atendance.R.layout.spinner_dropdown_item);
 
     }
 

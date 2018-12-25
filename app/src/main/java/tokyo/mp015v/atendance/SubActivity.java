@@ -1,14 +1,11 @@
-package com.example.watabe.atendance;
+package tokyo.mp015v.atendance;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TableRow;
@@ -16,11 +13,10 @@ import android.widget.TextView;
 
 //import com.websarva.wings.android.atendanceapp.R;
 
-import com.example.watabe.atendance.R;
-import mysqlite.Database;
-import mysqlite.SQLiteAdapter;
-import mysqlite.TableData;
-import mysqlite.TableRowData;
+import tokyo.mp015v.mysqlite.Database;
+import tokyo.mp015v.mysqlite.SQLiteAdapter;
+import tokyo.mp015v.mysqlite.TableData;
+import tokyo.mp015v.mysqlite.TableRowData;
 
 public class SubActivity extends AppCompatActivity {
     private TextView txtRoom;
@@ -32,13 +28,13 @@ public class SubActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sub);
+        setContentView(com.example.watabe.atendance.R.layout.activity_sub);
 
         //ビューを関連付ける
-        txtRoom = findViewById(R.id.txtRoom);
-        txtDate = findViewById(R.id.txtDate);
-        txtLessonTime = findViewById(R.id.txtLessonTime);
-        txtSubject = findViewById(R.id.txtSubject);
+        txtRoom = findViewById(com.example.watabe.atendance.R.id.txtRoom);
+        txtDate = findViewById(com.example.watabe.atendance.R.id.txtDate);
+        txtLessonTime = findViewById(com.example.watabe.atendance.R.id.txtLessonTime);
+        txtSubject = findViewById(com.example.watabe.atendance.R.id.txtSubject);
 
         //インテントから値を取得する
         Intent intent = getIntent();
@@ -58,13 +54,13 @@ public class SubActivity extends AppCompatActivity {
         String sql = "select distinct g_no, g_name from gakusei where r_name='@r_name'";
         sql = sql.replace( "@r_name",strRoom );
 
-        tblGakusei = (ViewGroup)findViewById(R.id.tblGakusei);
+        tblGakusei = (ViewGroup)findViewById(com.example.watabe.atendance.R.id.tblGakusei);
         TableData tableData = sqlAdapter.getTableData( sql );
         int i = 0;
 
         for( TableRowData row : tableData){
             Log.d("tableRowdata",row.getValue(0) );
-            getLayoutInflater().inflate(R.layout.table_row,tblGakusei);
+            getLayoutInflater().inflate(com.example.watabe.atendance.R.layout.table_row,tblGakusei);
             TableRow tr = (TableRow)tblGakusei.getChildAt(i);
             ((TextView)(tr.getChildAt(0))).setText(row.getValue(0));
             ((TextView)(tr.getChildAt(1))).setText(row.getValue(1));

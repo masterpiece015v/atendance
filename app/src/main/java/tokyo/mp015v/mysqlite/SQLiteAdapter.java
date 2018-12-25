@@ -1,4 +1,4 @@
-package mysqlite;
+package tokyo.mp015v.mysqlite;
 
 import android.content.Context;
 import android.database.Cursor;

@@ -1,9 +1,7 @@
-package mysqlite;
+package tokyo.mp015v.mysqlite;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeSet;
 
 public abstract class Table {
     protected String name;

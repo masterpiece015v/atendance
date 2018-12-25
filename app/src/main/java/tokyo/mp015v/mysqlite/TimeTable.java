@@ -1,4 +1,4 @@
-package mysqlite;
+package tokyo.mp015v.mysqlite;
 
 public class TimeTable extends Table {
     public TimeTable(){

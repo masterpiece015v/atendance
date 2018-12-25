@@ -1,4 +1,4 @@
-package mysqlite;
+package tokyo.mp015v.mysqlite;
 
 import java.util.HashMap;
 import java.util.Map;

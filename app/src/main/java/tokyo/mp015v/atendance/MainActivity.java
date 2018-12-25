@@ -1,4 +1,4 @@
-package com.example.watabe.atendance;
+package tokyo.mp015v.atendance;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,15 +13,14 @@ import com.example.watabe.atendance.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.DayOfWeek;
 import java.util.Calendar;
 import java.util.Date;
 
-import mysqlite.Database;
-import mysqlite.Gakusei;
-import mysqlite.SQLiteAdapter;
-import mysqlite.Subject;
-import mysqlite.TimeTable;
+import tokyo.mp015v.mysqlite.Database;
+import tokyo.mp015v.mysqlite.Gakusei;
+import tokyo.mp015v.mysqlite.SQLiteAdapter;
+import tokyo.mp015v.mysqlite.Subject;
+import tokyo.mp015v.mysqlite.TimeTable;
 
 public class MainActivity extends AppCompatActivity {
     private Spinner spnRoom;

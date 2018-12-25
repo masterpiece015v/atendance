@@ -1,14 +1,12 @@
-package mysqlite;
+package tokyo.mp015v.mysqlite;
 import android.util.Log;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Database {
     private String name;
-    private Map<String,Table> tableMap = new HashMap<>();
+    private Map<String, Table> tableMap = new HashMap<>();
 
     public Database( String name ){ this.name = name; }
     

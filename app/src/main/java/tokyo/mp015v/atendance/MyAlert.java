@@ -1,4 +1,4 @@
-package com.example.watabe.atendance;
+package tokyo.mp015v.atendance;
 
 import android.content.Context;
 import android.content.DialogInterface;
