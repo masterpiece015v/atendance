@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.function.Function;
 
 /*
-* How To
+ How To
 
   HttpResponseAsync async = new HttpResponseAsync( String url , String table_name );
   async.setFunction(new Function<String,Void>(){
