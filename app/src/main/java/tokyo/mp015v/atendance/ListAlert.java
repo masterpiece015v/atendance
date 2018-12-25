@@ -103,9 +103,9 @@ public class ListAlert {
         @Override
         public View getView(int position , View v, ViewGroup parent){
             if( null == v)
-                v = this.inflater.inflate(com.example.watabe.atendance.R.layout.custom_listview,null);
+                v = this.inflater.inflate(tokyo.mp015v.atendance.R.layout.custom_listview,null);
 
-            TextView textView = (TextView)v.findViewById(com.example.watabe.atendance.R.id.string_item);
+            TextView textView = (TextView)v.findViewById(tokyo.mp015v.atendance.R.id.string_item);
             textView.setText( (String)getItem(position) );
 
             //イベントの登録

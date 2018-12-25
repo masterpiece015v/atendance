@@ -28,13 +28,13 @@ public class SubActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.example.watabe.atendance.R.layout.activity_sub);
+        setContentView(tokyo.mp015v.atendance.R.layout.activity_sub);
 
         //ビューを関連付ける
-        txtRoom = findViewById(com.example.watabe.atendance.R.id.txtRoom);
-        txtDate = findViewById(com.example.watabe.atendance.R.id.txtDate);
-        txtLessonTime = findViewById(com.example.watabe.atendance.R.id.txtLessonTime);
-        txtSubject = findViewById(com.example.watabe.atendance.R.id.txtSubject);
+        txtRoom = findViewById(tokyo.mp015v.atendance.R.id.txtRoom);
+        txtDate = findViewById(tokyo.mp015v.atendance.R.id.txtDate);
+        txtLessonTime = findViewById(tokyo.mp015v.atendance.R.id.txtLessonTime);
+        txtSubject = findViewById(tokyo.mp015v.atendance.R.id.txtSubject);
 
         //インテントから値を取得する
         Intent intent = getIntent();
@@ -54,13 +54,13 @@ public class SubActivity extends AppCompatActivity {
         String sql = "select distinct g_no, g_name from gakusei where r_name='@r_name'";
         sql = sql.replace( "@r_name",strRoom );
 
-        tblGakusei = (ViewGroup)findViewById(com.example.watabe.atendance.R.id.tblGakusei);
+        tblGakusei = (ViewGroup)findViewById(tokyo.mp015v.atendance.R.id.tblGakusei);
         TableData tableData = sqlAdapter.getTableData( sql );
         int i = 0;
 
         for( TableRowData row : tableData){
             Log.d("tableRowdata",row.getValue(0) );
-            getLayoutInflater().inflate(com.example.watabe.atendance.R.layout.table_row,tblGakusei);
+            getLayoutInflater().inflate(tokyo.mp015v.atendance.R.layout.table_row,tblGakusei);
             TableRow tr = (TableRow)tblGakusei.getChildAt(i);
             ((TextView)(tr.getChildAt(0))).setText(row.getValue(0));
             ((TextView)(tr.getChildAt(1))).setText(row.getValue(1));

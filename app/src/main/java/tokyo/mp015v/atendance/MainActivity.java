@@ -9,18 +9,22 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.example.watabe.atendance.R;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.function.Function;
 
+import tokyo.mp015v.async.HttpResponseAsync;
 import tokyo.mp015v.mysqlite.Database;
-import tokyo.mp015v.mysqlite.Gakusei;
+import tokyo.mp015v.mysqlite.Student;
 import tokyo.mp015v.mysqlite.SQLiteAdapter;
 import tokyo.mp015v.mysqlite.Subject;
 import tokyo.mp015v.mysqlite.TimeTable;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
     private Spinner spnRoom;
@@ -64,56 +68,80 @@ public class MainActivity extends AppCompatActivity {
 
             database = new Database("mydb.db");
 
-            database.addTable(new Gakusei());
+            database.addTable(new Student());
             database.addTable(new Subject());
             database.addTable(new TimeTable());
 
             //データの登録
-            database.setValues("gakusei", new String[]{"10001", "川下", "1-1"});
-            database.setValues("gakusei", new String[]{"10003", "坂口", "1-1"});
-            database.setValues("gakusei", new String[]{"10005", "谷間", "1-1"});
-            database.setValues("gakusei", new String[]{"10008", "堂山", "1-1"});
-            database.setValues("gakusei", new String[]{"10009", "二井内", "1-1"});
 
-            database.setValues("subject", new String[]{"1-1", Weekday.MON.toString(), "1", "商業簿記"});
-            database.setValues("subject", new String[]{"1-1", Weekday.MON.toString(), "2", "商業簿記"});
-            database.setValues("subject", new String[]{"1-1", Weekday.MON.toString(), "3", "Java"});
-            database.setValues("subject", new String[]{"1-1", Weekday.TUE.toString(), "1", "Word"});
-            database.setValues("subject", new String[]{"1-1", Weekday.TUE.toString(), "2", "情報概論"});
-            database.setValues("subject", new String[]{"1-1", Weekday.WED.toString(), "1", "Excel"});
-            database.setValues("subject", new String[]{"1-1", Weekday.WED.toString(), "2", "情報概論"});
-            database.setValues("subject", new String[]{"1-1", Weekday.WED.toString(), "3", "工業簿記"});
-            database.setValues("subject", new String[]{"1-1", Weekday.THU.toString(), "1", "工業簿記"});
-            database.setValues("subject", new String[]{"1-1", Weekday.THU.toString(), "2", "職業指導"});
-            database.setValues("subject", new String[]{"1-1", Weekday.THU.toString(), "3", "商業簿記"});
-            database.setValues("subject", new String[]{"1-1", Weekday.FRI.toString(), "1", "Excel"});
-            database.setValues("subject", new String[]{"1-1", Weekday.FRI.toString(), "2", "情報概論"});
-            database.setValues("subject", new String[]{"1-1", Weekday.FRI.toString(), "3", "工業簿記"});
+            database.setValues("subject", new String[]{"10001", Weekday.MON.toString(), "1", "商業簿記"});
+            database.setValues("subject", new String[]{"10001", Weekday.MON.toString(), "2", "商業簿記"});
+            database.setValues("subject", new String[]{"10001", Weekday.MON.toString(), "3", "Java"});
+            database.setValues("subject", new String[]{"10001", Weekday.TUE.toString(), "1", "Word"});
+            database.setValues("subject", new String[]{"10001", Weekday.TUE.toString(), "2", "情報概論"});
+            database.setValues("subject", new String[]{"10001", Weekday.WED.toString(), "1", "Excel"});
+            database.setValues("subject", new String[]{"10001", Weekday.WED.toString(), "2", "情報概論"});
+            database.setValues("subject", new String[]{"10001", Weekday.WED.toString(), "3", "工業簿記"});
+            database.setValues("subject", new String[]{"10001", Weekday.THU.toString(), "1", "工業簿記"});
+            database.setValues("subject", new String[]{"10001", Weekday.THU.toString(), "2", "職業指導"});
+            database.setValues("subject", new String[]{"10001", Weekday.THU.toString(), "3", "商業簿記"});
+            database.setValues("subject", new String[]{"10001", Weekday.FRI.toString(), "1", "Excel"});
+            database.setValues("subject", new String[]{"10001", Weekday.FRI.toString(), "2", "情報概論"});
+            database.setValues("subject", new String[]{"10001", Weekday.FRI.toString(), "3", "工業簿記"});
 
-            database.setValues("subject", new String[]{"1-2", Weekday.MON.toString(), "1", "ビジネス実務"});
-            database.setValues("subject", new String[]{"1-2", Weekday.MON.toString(), "2", "PowerPoint"});
-            database.setValues("subject", new String[]{"1-2", Weekday.MON.toString(), "3", "Access"});
-            database.setValues("subject", new String[]{"1-2", Weekday.TUE.toString(), "1", "FP"});
-            database.setValues("subject", new String[]{"1-2", Weekday.TUE.toString(), "2", "FP"});
-            database.setValues("subject", new String[]{"1-2", Weekday.WED.toString(), "1", "プレゼン"});
-            database.setValues("subject", new String[]{"1-2", Weekday.WED.toString(), "2", "消費税"});
-            database.setValues("subject", new String[]{"1-2", Weekday.WED.toString(), "3", "所得税"});
-            database.setValues("subject", new String[]{"1-2", Weekday.THU.toString(), "1", "法人税"});
-            database.setValues("subject", new String[]{"1-2", Weekday.THU.toString(), "2", "Webページ"});
-            database.setValues("subject", new String[]{"1-2", Weekday.THU.toString(), "3", "ビジネス会計"});
-            database.setValues("subject", new String[]{"1-2", Weekday.FRI.toString(), "1", "ビジネス会計"});
-            database.setValues("subject", new String[]{"1-2", Weekday.FRI.toString(), "2", "PowerPoint"});
-            database.setValues("subject", new String[]{"1-2", Weekday.FRI.toString(), "3", "Access"});
+            database.setValues("subject", new String[]{"10002", Weekday.MON.toString(), "1", "ビジネス実務"});
+            database.setValues("subject", new String[]{"10002", Weekday.MON.toString(), "2", "PowerPoint"});
+            database.setValues("subject", new String[]{"10002", Weekday.MON.toString(), "3", "Access"});
+            database.setValues("subject", new String[]{"10002", Weekday.TUE.toString(), "1", "FP"});
+            database.setValues("subject", new String[]{"10002", Weekday.TUE.toString(), "2", "FP"});
+            database.setValues("subject", new String[]{"10002", Weekday.WED.toString(), "1", "プレゼン"});
+            database.setValues("subject", new String[]{"10002", Weekday.WED.toString(), "2", "消費税"});
+            database.setValues("subject", new String[]{"10002", Weekday.WED.toString(), "3", "所得税"});
+            database.setValues("subject", new String[]{"10002", Weekday.THU.toString(), "1", "法人税"});
+            database.setValues("subject", new String[]{"10002", Weekday.THU.toString(), "2", "Webページ"});
+            database.setValues("subject", new String[]{"10002", Weekday.THU.toString(), "3", "ビジネス会計"});
+            database.setValues("subject", new String[]{"10002", Weekday.FRI.toString(), "1", "ビジネス会計"});
+            database.setValues("subject", new String[]{"10002", Weekday.FRI.toString(), "2", "PowerPoint"});
+            database.setValues("subject", new String[]{"10002", Weekday.FRI.toString(), "3", "Access"});
             this.sqlAdapter = new SQLiteAdapter(this.getApplicationContext(), database);
             count = count + 1;
         }
+
+        //データの取得
+        HttpResponseAsync async = new HttpResponseAsync("http://10.0.2.2:8000/polls/gettable/","table_name=student");
+        async.setFunction( new Function<String,Void>(){
+            @Override
+            public Void apply(String s) {
+                if( s != null) {
+
+                    try {
+                        JSONObject json = new JSONObject(s);
+                        Log.d("jsonStr",s);
+                        Log.d("table", json.getString("table_name"));
+
+                        for( int i = 0 ; i < json.getInt("row_count") ; i++) {
+                            JSONArray ary = json.getJSONArray("rows");
+                            JSONObject row = new JSONObject( ary.getString(0));
+                            database.setValues("student", new String[]{row.getString("st_no"), row.getString("st_name"), row.getString("ro_no_id")});
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }else {
+                    Log.d("table", "null");
+                }
+                    return null;
+            }
+        });
+        async.execute();
 
         if( count > 0 ){
             this.sqlAdapter = new SQLiteAdapter(this.getApplicationContext(), new Database( "mydb.db"));
         }
 
         //クラスのスピナーに登録
-        String[] aryRoom = this.sqlAdapter.getSpinnerString("select distinct r_name from gakusei");
+        String[] aryRoom = this.sqlAdapter.getSpinnerString("select distinct ro_no_id from student");
         ArrayAdapter<String> aryAdapter = new ArrayAdapter<>(
                 this,
                 R.layout.spinner_item,
@@ -241,10 +269,12 @@ public class MainActivity extends AppCompatActivity {
 
             //クラスが受講している全ての科目
             String sql = "select distinct k_name from subject where r_name='@r_name'";
-            sql = sql.replace("@r_name",room);
+            if(room!=null)
+                sql = sql.replace("@r_name",room);
             //該当するクラス
             String sql2 = "select distinct k_name from subject where r_name='@r_name' and weekday='@weekday' and lessonTime=@lessonTime";
-            sql2 = sql2.replace("@r_name",room);
+            if(room!=null)
+                sql2 = sql2.replace("@r_name",room);
 
             switch( c.get(Calendar.DAY_OF_WEEK)){
                 case Calendar.SUNDAY:
